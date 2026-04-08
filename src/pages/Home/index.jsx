@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
 import Header from "../../components/Header"
 import { PrimaryButton } from "../../styles/button"
 import { Container } from "../../styles/container"
 import { HomeHeadline, HomeSection, HomeTagline, HomeTitle, HomeWrapper } from "./styles"
+import pageBanner from "/images/image-homepage.png"
 
 const Home = () => {
     return (
@@ -21,11 +23,11 @@ const Home = () => {
                                     Domine as tecnologias utilizadas pelas empresas mais inovadoras do mundo e encare seu novo desafio profissional, evoluindo em comunidade com os melhores experts.
                                 </HomeTagline>
 
-                                <PrimaryButton>Começar agora</PrimaryButton>
+                                <PrimaryButton as={Link} to="/login">Começar agora</PrimaryButton>
                             </HomeHeadline>
 
                             <div>
-                                <img src="/images/image-homepage.png" alt="" />
+                                <img src={pageBanner} alt="Banner da Homepage" />
                             </div>
                         </HomeWrapper>
                     </Container>

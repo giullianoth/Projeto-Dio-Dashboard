@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { Container } from "../../styles/container"
 import { HeaderContainer, HeaderWrapper, Menu, MenuItem } from "./styles"
 import { Button } from "../../styles/button"
+import logo from "/images/logo-dio.png"
 
 const Header = () => {
     return (
@@ -9,7 +10,7 @@ const Header = () => {
             <Container>
                 <HeaderWrapper>
                     <Link to="/">
-                        <img src="/images/logo-dio.png" alt="DIO" />
+                        <img src={logo} alt="DIO" />
                     </Link>
 
                     <Menu>
@@ -18,11 +19,11 @@ const Header = () => {
                         </MenuItem>
 
                         <MenuItem>
-                            <Button as="a" href="#">Entrar</Button>
+                            <Button as={Link} to="/login">Entrar</Button>
                         </MenuItem>
 
                         <MenuItem>
-                            <Button as="a" href="#">Cadastrar</Button>
+                            <Button as={Link} to="/cadastrar">Cadastrar</Button>
                         </MenuItem>
                     </Menu>
                 </HeaderWrapper>
