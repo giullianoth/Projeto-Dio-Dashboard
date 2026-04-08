@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
     :root {
         --color-background: #1E192C;
         --color-background-alt: #151515;
@@ -31,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         color: inherit;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
     }
 `
 
