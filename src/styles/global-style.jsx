@@ -7,11 +7,14 @@ const GlobalStyle = createGlobalStyle`
         --color-background-neutral: #565656;
         --color-accent: #E4105D;
         --color-accent-alt: #8647AD;
+        --color-accent-neutral: #3B3450;
         --color-yellow: #E5E044;
         --color-green: #23DD7A;
         --color-white: #FFF;
 
         --font-open-sans: "Open Sans", sans-serif;
+
+        --transition: all 0.3s ease;
     }
 
     * {

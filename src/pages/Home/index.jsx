@@ -2,8 +2,9 @@ import { Link } from "react-router-dom"
 import Header from "../../components/Header"
 import { PrimaryButton } from "../../styles/button"
 import { Container } from "../../styles/container"
-import { HomeHeadline, HomeSection, HomeTagline, HomeTitle, HomeWrapper } from "./styles"
+import { HomeHeadline, HomeTagline, HomeTitle, HomeWrapper } from "./styles"
 import pageBanner from "/images/image-homepage.png"
+import { Section } from "../../styles/section"
 
 const Home = () => {
     return (
@@ -11,7 +12,7 @@ const Home = () => {
             <Header />
 
             <main>
-                <HomeSection>
+                <Section>
                     <Container>
                         <HomeWrapper>
                             <HomeHeadline>
@@ -31,7 +32,7 @@ const Home = () => {
                             </div>
                         </HomeWrapper>
                     </Container>
-                </HomeSection>
+                </Section>
             </main>
         </>
     )

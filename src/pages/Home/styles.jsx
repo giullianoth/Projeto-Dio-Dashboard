@@ -1,9 +1,5 @@
 import styled from "styled-components"
 
-export const HomeSection = styled.section`
-    padding-block: 80px;
-`
-
 export const HomeWrapper = styled.div`
     display: flex;
     justify-content: space-between;
