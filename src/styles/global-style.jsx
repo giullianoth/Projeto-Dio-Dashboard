@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
         display: block;
         max-width: 100%;
     }
+
+    svg {
+        vertical-align: middle;
+    }
 `
 
 export default GlobalStyle

@@ -17,10 +17,6 @@ export const InputIcon = styled.span`
     display: inline-block;
     color: var(--color-accent-alt);
     flex-basis: 1rem;
-    
-    & > * {
-        vertical-align: middle;
-    }
 `
 
 export const InputElement = styled.input`

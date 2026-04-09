@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 import { Container } from "../../styles/container"
-import { HeaderContainer, HeaderWrapper, Menu, MenuIcon, MenuItem } from "./styles"
+import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, HeaderUserContainer, HeaderUserIcon, HeaderUserImage, HeaderWrapper, Menu, MenuIcon, MenuItem } from "./styles"
 import { Button } from "../../styles/button"
 import logo from "/images/logo-dio.png"
-import { MdMenu } from "react-icons/md"
+import { MdKeyboardArrowDown, MdMenu, MdSearch } from "react-icons/md"
 import { useState } from "react"
 
-const Header = () => {
+const Header = ({ authenticated }) => {
     const [open, setOpen] = useState(false)
 
     const handleToggleMenu = () => {
@@ -21,23 +21,59 @@ const Header = () => {
                         <img src={logo} alt="DIO" />
                     </Link>
 
-                    <MenuIcon onClick={handleToggleMenu}>
-                        <MdMenu />
-                    </MenuIcon>
+                    {authenticated &&
+                        <Menu>
+                            <MenuItem>
+                                <HeaderSearch>
+                                    <HeaderSearchIcon>
+                                        <MdSearch />
+                                    </HeaderSearchIcon>
 
-                    <Menu open={open}>
-                        <MenuItem>
-                            <Link to="/">Home</Link>
-                        </MenuItem>
+                                    <HeaderSearchInput type="text" placeholder="Buscar" />
+                                </HeaderSearch>
+                            </MenuItem>
 
-                        <MenuItem>
-                            <Button as={Link} to="/login">Entrar</Button>
-                        </MenuItem>
+                            <MenuItem>
+                                <a href="#">
+                                    <strong>Live Code</strong>
+                                </a>
+                            </MenuItem>
 
-                        <MenuItem>
-                            <Button as={Link} to="/cadastrar">Cadastrar</Button>
-                        </MenuItem>
-                    </Menu>
+                            <MenuItem>
+                                <a href="#">
+                                    <strong>Global</strong>
+                                </a>
+                            </MenuItem>
+                        </Menu>}
+
+                    {authenticated
+                        ? <HeaderUserContainer>
+                            <HeaderUserImage src="https://avatars.githubusercontent.com/u/106249494?v=4" alt="Giulliano Guimarães" />
+
+                            <HeaderUserIcon>
+                                <MdKeyboardArrowDown />
+                            </HeaderUserIcon>
+                        </HeaderUserContainer>
+
+                        : <>
+                            <MenuIcon onClick={handleToggleMenu}>
+                                <MdMenu />
+                            </MenuIcon>
+
+                            <Menu mobilemenu open={open}>
+                                <MenuItem>
+                                    <Link to="/">Home</Link>
+                                </MenuItem>
+
+                                <MenuItem>
+                                    <Button as={Link} to="/login">Entrar</Button>
+                                </MenuItem>
+
+                                <MenuItem>
+                                    <Button as={Link} to="/cadastrar">Cadastrar</Button>
+                                </MenuItem>
+                            </Menu>
+                        </>}
                 </HeaderWrapper>
             </Container>
         </HeaderContainer>
