@@ -63,6 +63,13 @@ export const AuthLinks = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 700;
+
+    span {
+        ${media.large`
+            margin-inline: auto;
+        `}
+    }
 `
 
 export const Forgot = styled.a`
