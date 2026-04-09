@@ -5,11 +5,14 @@ import { Container } from "../../styles/container"
 import { Section } from "../../styles/section"
 import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, AuthTitle, AuthWrapper, Forgot, Redirect } from "./styles"
 import { PrimaryButton } from "../../styles/button"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
+    const navigate = useNavigate()
+
     const handleSubmit = event => {
         event.preventDefault()
+        navigate("/feed")
     }
 
     return (

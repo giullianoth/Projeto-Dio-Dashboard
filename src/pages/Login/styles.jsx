@@ -5,7 +5,7 @@ export const AuthWrapper = styled.div`
     justify-content: space-between;
 `
 
-export const AuthTitle = styled.h2`
+export const AuthTitle = styled.h1`
     max-width: 480px;
     font-size: 2rem;
     line-height: 1.5;

@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
         --color-background: #1E192C;
         --color-background-alt: #151515;
         --color-background-neutral: #565656;
+        --color-background-neutral-alt: #3B4651;
         --color-accent: #E4105D;
         --color-accent-alt: #8647AD;
         --color-accent-neutral: #3B3450;
