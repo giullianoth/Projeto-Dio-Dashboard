@@ -34,3 +34,8 @@ export const InputElement = styled.input`
         color: var(--color-white);
     }
 `
+export const InputError = styled.p`
+    color: red;
+    font-size: 0.75rem;
+    margin-top: 6px;
+`

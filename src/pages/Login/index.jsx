@@ -6,12 +6,25 @@ import { Section } from "../../styles/section"
 import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, AuthTitle, AuthWrapper, Forgot, Redirect } from "./styles"
 import { PrimaryButton } from "../../styles/button"
 import { Link, useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+
+const schema = yup.object({
+    email: yup.string().email("E-mail não é válido").required("E-mail é obrigatório"),
+    password: yup.string().min(3, "No mínimo 3 caracteres").required("Senha é obrigatória")
+}).required()
 
 const Login = () => {
     const navigate = useNavigate()
 
-    const handleSubmit = event => {
-        event.preventDefault()
+    const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange",
+    })
+
+    const onSubmit = data => {
+        console.log(data, isValid)
         navigate("/feed")
     }
 
@@ -36,18 +49,22 @@ const Login = () => {
                                     Faça seu login e make the change._
                                 </AuthFormText>
 
-                                <AuthForm onSubmit={handleSubmit}>
+                                <AuthForm onSubmit={handleSubmit(onSubmit)}>
                                     <Input
+                                        control={control}
                                         icon={<MdEmail />}
                                         type="email"
                                         name="email"
-                                        placeholder="E-mail" />
+                                        placeholder="E-mail"
+                                        errorMessage={errors?.email?.message} />
 
                                     <Input
+                                        control={control}
                                         icon={<MdLock />}
                                         type="password"
                                         name="password"
-                                        placeholder="Senha" />
+                                        placeholder="Senha"
+                                        errorMessage={errors?.password?.message} />
 
                                     <PrimaryButton type="submit">Entrar</PrimaryButton>
                                 </AuthForm>
