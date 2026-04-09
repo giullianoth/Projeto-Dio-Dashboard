@@ -1,7 +1,6 @@
 import Card from "../../components/Card"
 import Header from "../../components/Header"
 import RankedUser from "../../components/RankedUser"
-import { Section } from "../../styles/section"
 import { FeedAside, FeedAsideTitle, FeedAsideUsers, FeedContainer, FeedPosts, FeedSection, FeedTitle } from "./styles"
 
 const Feed = () => {

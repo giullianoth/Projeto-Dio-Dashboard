@@ -1,13 +1,29 @@
 import styled from "styled-components"
+import { media } from "../../styles/responsivity"
 
 export const HomeWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    ${media.large`
+        flex-direction: column-reverse;
+        row-gap: 60px;
+    `}
 `
 
 export const HomeHeadline = styled.div`
     max-width: 370px;
+
+    ${media.large`
+        text-align: center;
+    `}
+
+    a {
+        ${media.small`
+            width: 100%;
+        `}
+    }
 `
 
 export const HomeTitle = styled.h1`

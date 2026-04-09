@@ -1,4 +1,4 @@
-import { MdEmail } from "react-icons/md"
+import { MdEmail, MdLock } from "react-icons/md"
 import Header from "../../components/Header"
 import Input from "../../components/Input"
 import { Container } from "../../styles/container"
@@ -44,7 +44,7 @@ const Login = () => {
                                         placeholder="E-mail" />
 
                                     <Input
-                                        icon={<MdEmail />}
+                                        icon={<MdLock />}
                                         type="password"
                                         name="password"
                                         placeholder="Senha" />
