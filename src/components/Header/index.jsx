@@ -60,7 +60,7 @@ const Header = ({ authenticated }) => {
                                 <MdMenu />
                             </MenuIcon>
 
-                            <Menu mobilemenu open={open}>
+                            <Menu $mobileMenu $open={open}>
                                 <MenuItem>
                                     <Link to="/">Home</Link>
                                 </MenuItem>

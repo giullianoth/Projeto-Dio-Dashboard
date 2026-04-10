@@ -76,7 +76,7 @@ export const Menu = styled.ul`
     align-items: center;
     gap: 24px;
 
-    ${({ mobilemenu, open }) => mobilemenu
+    ${({ $mobileMenu, $open }) => $mobileMenu
         ? media.large`
             position: absolute;
             top: 100%;
@@ -88,8 +88,8 @@ export const Menu = styled.ul`
             z-index: 100;
             overflow: hidden;
             transition: var(--transition);
-            max-height: ${open ? "179px" : "0"};
-            border-top: 1px solid ${open ? "var(--color-accent-neutral)" : "transparent"};
+            max-height: ${$open ? "179px" : "0"};
+            border-top: 1px solid ${$open ? "var(--color-accent-neutral)" : "transparent"};
         `
         : media.small`
             display: none;
