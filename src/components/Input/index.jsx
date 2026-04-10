@@ -3,7 +3,7 @@ import { Controller } from "react-hook-form"
 
 const Input = ({ icon, control, errorMessage, ...rest }) => {
   return (
-    <div>
+    <label>
       <InputContainer>
         {icon && <InputIcon>{icon}</InputIcon>}
 
@@ -15,7 +15,7 @@ const Input = ({ icon, control, errorMessage, ...rest }) => {
       </InputContainer>
 
       {errorMessage && <InputError>{errorMessage}</InputError>}
-    </div>
+    </label>
   )
 }
 

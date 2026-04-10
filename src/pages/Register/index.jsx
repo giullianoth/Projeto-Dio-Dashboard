@@ -6,12 +6,26 @@ import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, Auth
 import Input from "../../components/Input"
 import { MdEmail, MdLock, MdPerson } from "react-icons/md"
 import { PrimaryButton } from "../../styles/button"
+import * as yup from "yup"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+
+const schema = yup.object({
+    name: yup.string().required("Nome é obrigatório"),
+    email: yup.string().email("E-mail não é válido").required("E-mail é obrigatório"),
+    password: yup.string().min(3, "No mínimo 3 caracteres").required("Senha é obrigatória")
+}).required()
 
 const Register = () => {
     const navigate = useNavigate()
 
-    const handleSubmit = event => {
-        event.preventDefault()
+    const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange"
+    })
+
+    const handleSignUp = data => {
+        console.log(data, isValid)
         navigate("/feed")
     }
 
@@ -36,32 +50,32 @@ const Register = () => {
                                     Crie sua conta e make the change._
                                 </AuthFormText>
 
-                                <AuthForm onSubmit={handleSubmit}>
+                                <AuthForm onSubmit={handleSubmit(handleSignUp)}>
                                     <Input
+                                    control={control}
                                         icon={<MdPerson />}
                                         type="text"
                                         name="name"
-                                        placeholder="Nome completo" />
+                                        placeholder="Nome completo"
+                                        errorMessage={errors?.name?.message} />
 
                                     <Input
+                                    control={control}
                                         icon={<MdEmail />}
                                         type="email"
                                         name="email"
-                                        placeholder="E-mail" />
+                                        placeholder="E-mail"
+                                        errorMessage={errors?.email?.message} />
 
                                     <Input
-                                        icon={<MdEmail />}
-                                        type="email"
-                                        name="email"
-                                        placeholder="E-mail" />
-
-                                    <Input
+                                        control={control}
                                         icon={<MdLock />}
                                         type="password"
                                         name="password"
-                                        placeholder="Senha" />
+                                        placeholder="Senha"
+                                        errorMessage={errors?.password?.message} />
 
-                                        <PrimaryButton type="submit">Criar minha conta</PrimaryButton>
+                                    <PrimaryButton type="submit">Criar minha conta</PrimaryButton>
                                 </AuthForm>
 
                                 <AuthFormText>

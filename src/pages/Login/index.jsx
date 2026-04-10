@@ -23,7 +23,7 @@ const Login = () => {
         mode: "onChange",
     })
 
-    const onSubmit = data => {
+    const handleSignIn = data => {
         console.log(data, isValid)
         navigate("/feed")
     }
@@ -49,7 +49,7 @@ const Login = () => {
                                     Faça seu login e make the change._
                                 </AuthFormText>
 
-                                <AuthForm onSubmit={handleSubmit(onSubmit)}>
+                                <AuthForm onSubmit={handleSubmit(handleSignIn)}>
                                     <Input
                                         control={control}
                                         icon={<MdEmail />}
