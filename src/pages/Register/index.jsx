@@ -26,14 +26,25 @@ const Register = () => {
     })
 
     const handleSignUp = async formData => {
-        const { data: users } = await api.get(`/users?email=${formData.email}`)
+        try {
+            const { data: users } = await api.get(`/users?email=${formData.email}`)
 
         if (users.length) {
             alert("E-mail já cadastrado")
             return
         }
 
+        const response = await api.post("users", formData)
+        
+        if (response.status !== 201) {
+            alert("Houve um erro, tente novamente.")
+            return
+        }
+
         navigate("/feed")
+        } catch {
+            alert("Houve um erro, tente novamente.")
+        }
     }
 
     return (
