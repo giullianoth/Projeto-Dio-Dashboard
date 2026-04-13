@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import api from "../../services/api"
 
 const schema = yup.object({
     email: yup.string().email("E-mail não é válido").required("E-mail é obrigatório"),
@@ -18,14 +19,31 @@ const schema = yup.object({
 const Login = () => {
     const navigate = useNavigate()
 
-    const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+    const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     })
 
-    const handleSignIn = data => {
-        console.log(data, isValid)
-        navigate("/feed")
+    const handleSignIn = async formData => {
+        try {
+            const { data } = await api.get(`users?email=${encodeURIComponent(formData.email)}`)
+
+            if (!data.length) {
+                alert("E-mail inválido")
+                return
+            }
+
+            const [user] = data
+
+            if (formData.password !== user.password) {
+                alert("Senha inválida")
+                return
+            }
+
+            navigate("/feed")
+        } catch {
+            alert("Houve um erro, tente novamente.")
+        }
     }
 
     return (

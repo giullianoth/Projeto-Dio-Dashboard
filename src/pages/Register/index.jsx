@@ -9,6 +9,7 @@ import { PrimaryButton } from "../../styles/button"
 import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
+import api from "../../services/api"
 
 const schema = yup.object({
     name: yup.string().required("Nome é obrigatório"),
@@ -19,13 +20,19 @@ const schema = yup.object({
 const Register = () => {
     const navigate = useNavigate()
 
-    const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+    const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange"
     })
 
-    const handleSignUp = data => {
-        console.log(data, isValid)
+    const handleSignUp = async formData => {
+        const { data: users } = await api.get(`/users?email=${formData.email}`)
+
+        if (users.length) {
+            alert("E-mail já cadastrado")
+            return
+        }
+
         navigate("/feed")
     }
 
@@ -52,7 +59,7 @@ const Register = () => {
 
                                 <AuthForm onSubmit={handleSubmit(handleSignUp)}>
                                     <Input
-                                    control={control}
+                                        control={control}
                                         icon={<MdPerson />}
                                         type="text"
                                         name="name"
@@ -60,7 +67,7 @@ const Register = () => {
                                         errorMessage={errors?.name?.message} />
 
                                     <Input
-                                    control={control}
+                                        control={control}
                                         icon={<MdEmail />}
                                         type="email"
                                         name="email"

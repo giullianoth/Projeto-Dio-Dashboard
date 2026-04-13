@@ -11,7 +11,7 @@ const RankedUser = ({ percent }) => {
                 <RankedUserName>
                     Giulliano Guimarães
                 </RankedUserName>
-                <RankBar percent={percent} />
+                <RankBar $percent={percent} />
             </RankedUserInfo>
         </RankedUserContainer>
     )

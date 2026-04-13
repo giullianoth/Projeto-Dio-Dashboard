@@ -40,7 +40,7 @@ export const RankBar = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        width: ${({ percent }) => percent}%;
+        width: ${({ $percent }) => $percent}%;
         height: 9px;
         background-color: var(--color-green);
     }

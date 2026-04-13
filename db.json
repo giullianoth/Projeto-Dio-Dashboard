@@ -1,0 +1,22 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "name": "Giulliano",
+            "email": "giulliano@email.com",
+            "password": "123456"
+        },
+        {
+            "id": "2",
+            "name": "Clóvis",
+            "email": "clovis@miau.com",
+            "password": "123456"
+        },
+        {
+            "id": "3",
+            "name": "Zenon",
+            "email": "zenon@miau.com",
+            "password": "123456"
+        }
+    ]
+}
