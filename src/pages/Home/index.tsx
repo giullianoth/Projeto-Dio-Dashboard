@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import Header from "../../components/Header"
-import { PrimaryButton } from "../../styles/button"
-import { Container } from "../../styles/container"
-import { HomeHeadline, HomeTagline, HomeTitle, HomeWrapper } from "./styles"
+import Header from "../../components/Header/index.js"
+import { PrimaryButton } from "../../styles/button.js"
+import { Container } from "../../styles/container.js"
+import { HomeHeadline, HomeTagline, HomeTitle, HomeWrapper } from "./styles.jsx"
 import pageBanner from "/images/image-homepage.png"
-import { Section } from "../../styles/section"
+import { Section } from "../../styles/section.js"
 
 const Home = () => {
     return (

@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { media } from "../../styles/responsivity";
+import { media } from "../../styles/responsivity.js";
+
+
+type MenuProps = {
+    $mobileMenu?: boolean
+    $open?: boolean
+}
 
 export const HeaderContainer = styled.header`
     background-color: var(--color-background-alt);
@@ -71,7 +77,7 @@ export const MenuIcon = styled.button`
     `}
 `
 
-export const Menu = styled.ul`
+export const Menu = styled.ul<MenuProps>`
     display: flex;
     align-items: center;
     gap: 24px;
@@ -83,7 +89,7 @@ export const Menu = styled.ul`
             left: 0;
             width: 100%;
             background-color: var(--color-background-alt);
-            padding: ${open ? "20px" : "0"} 20px;
+            padding: ${$open ? "20px" : "0"} 20px;
             flex-direction: column;
             z-index: 100;
             overflow: hidden;

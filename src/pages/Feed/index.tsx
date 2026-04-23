@@ -1,7 +1,7 @@
-import Card from "../../components/Card"
-import Header from "../../components/Header"
-import RankedUser from "../../components/RankedUser"
-import { FeedAside, FeedAsideTitle, FeedAsideUsers, FeedContainer, FeedPosts, FeedSection, FeedTitle } from "./styles"
+import Card from "../../components/Card/index.js"
+import Header from "../../components/Header/index.js"
+import RankedUser from "../../components/RankedUser/index.js"
+import { FeedAside, FeedAsideTitle, FeedAsideUsers, FeedContainer, FeedPosts, FeedSection, FeedTitle } from "./styles.jsx"
 
 const Feed = () => {
     return (

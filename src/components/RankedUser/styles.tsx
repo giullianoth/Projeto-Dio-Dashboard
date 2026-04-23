@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+type RankBarProps = {
+    $percent: number
+}
+
 export const RankedUserContainer = styled.div`
     display: flex;
     align-items: center;
@@ -27,7 +31,7 @@ export const RankedUserName = styled.h3`
     margin-bottom: 5px;
 `
 
-export const RankBar = styled.div`
+export const RankBar = styled.div<RankBarProps>`
     width: 100%;
     height: 9px;
     background-color: var(--color-white);

@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { Container } from "../../styles/container"
-import { Section } from "../../styles/section"
-import { media } from "../../styles/responsivity"
+import { Container } from "../../styles/container.js"
+import { Section } from "../../styles/section.js"
+import { media } from "../../styles/responsivity.js"
 
 export const FeedContainer = styled(Container)`
     display: flex;

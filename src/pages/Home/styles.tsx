@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { media } from "../../styles/responsivity"
+import { media } from "../../styles/responsivity.js"
 
 export const HomeWrapper = styled.div`
     display: flex;

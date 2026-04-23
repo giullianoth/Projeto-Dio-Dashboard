@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom"
-import { Container } from "../../styles/container"
-import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, HeaderUserContainer, HeaderUserIcon, HeaderUserImage, HeaderWrapper, Menu, MenuIcon, MenuItem } from "./styles"
-import { Button } from "../../styles/button"
+import { Container } from "../../styles/container.js"
+import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, HeaderUserContainer, HeaderUserIcon, HeaderUserImage, HeaderWrapper, Menu, MenuIcon, MenuItem } from "./styles.jsx"
+import { Button } from "../../styles/button.js"
 import logo from "/images/logo-dio.png"
 import { MdKeyboardArrowDown, MdMenu, MdSearch } from "react-icons/md"
 import { useState } from "react"
 
-const Header = ({ authenticated }) => {
+type Props = {
+    authenticated?: boolean
+}
+
+const Header = ({ authenticated }: Props) => {
     const [open, setOpen] = useState(false)
 
     const handleToggleMenu = () => {

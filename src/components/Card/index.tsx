@@ -1,5 +1,5 @@
 import { FiThumbsUp } from "react-icons/fi"
-import { CardContainer, CardDescription, CardImage, CardImageContainer, CardInfo, CardLikes, CardTags, CardTitle, CardUser, CardUserImage, CardUserImageContainer, CardUserName, CardUserNameContainer } from "./styles"
+import { CardContainer, CardDescription, CardImage, CardImageContainer, CardInfo, CardLikes, CardTags, CardTitle, CardUser, CardUserImage, CardUserImageContainer, CardUserName, CardUserNameContainer } from "./styles.jsx"
 import postImage from "/images/post-image.png"
 
 const Card = () => {

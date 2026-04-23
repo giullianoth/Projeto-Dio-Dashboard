@@ -1,6 +1,10 @@
-import { RankBar, RankedUserContainer, RankedUserImage, RankedUserImageContainer, RankedUserInfo, RankedUserName } from "./styles"
+import { RankBar, RankedUserContainer, RankedUserImage, RankedUserImageContainer, RankedUserInfo, RankedUserName } from "./styles.jsx"
 
-const RankedUser = ({ percent }) => {
+type Props = {
+    percent: number
+}
+
+const RankedUser = ({ percent }: Props) => {
     return (
         <RankedUserContainer>
             <RankedUserImageContainer>

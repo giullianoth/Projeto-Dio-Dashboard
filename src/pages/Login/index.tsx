@@ -1,15 +1,17 @@
 import { MdEmail, MdLock } from "react-icons/md"
-import Header from "../../components/Header"
-import Input from "../../components/Input"
-import { Container } from "../../styles/container"
-import { Section } from "../../styles/section"
-import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, AuthTitle, AuthWrapper, Forgot, Redirect } from "./styles"
-import { PrimaryButton } from "../../styles/button"
+import Header from "../../components/Header/index.js"
+import Input from "../../components/Input/index.js"
+import { Container } from "../../styles/container.js"
+import { Section } from "../../styles/section.js"
+import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, AuthTitle, AuthWrapper, Forgot, Redirect } from "./styles.jsx"
+import { PrimaryButton } from "../../styles/button.js"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import api from "../../services/api"
+import api from "../../services/api.js"
+
+type FormData = yup.InferType<typeof schema>
 
 const schema = yup.object({
     email: yup.string().email("E-mail não é válido").required("E-mail é obrigatório"),
@@ -19,12 +21,16 @@ const schema = yup.object({
 const Login = () => {
     const navigate = useNavigate()
 
-    const { control, handleSubmit, formState: { errors } } = useForm({
+    const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: yupResolver(schema),
         mode: "onChange",
+        defaultValues: {
+            email: "",
+            password: ""
+        }
     })
 
-    const handleSignIn = async formData => {
+    const handleSignIn = async (formData: FormData) => {
         try {
             const { data } = await api.get(`users?email=${encodeURIComponent(formData.email)}`)
 
