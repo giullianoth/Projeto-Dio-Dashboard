@@ -4,12 +4,12 @@ import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, Hea
 import { Button } from "../../styles/button.js"
 import logo from "/images/logo-dio.png"
 import { MdKeyboardArrowDown, MdMenu, MdSearch } from "react-icons/md"
-import { useContext, useState } from "react"
-import { AuthContext } from "../../context/auth.js"
+import { useState } from "react"
+import { useAuth } from "../../hooks/auth.js"
 
 const Header = () => {
     const [open, setOpen] = useState(false)
-    const { user, handleLogout } = useContext(AuthContext)
+    const { user, handleLogout } = useAuth()
 
     const handleToggleMenu = () => {
         setOpen(prev => !prev)

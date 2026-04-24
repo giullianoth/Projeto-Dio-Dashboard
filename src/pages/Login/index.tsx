@@ -9,8 +9,7 @@ import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useContext } from "react"
-import { AuthContext } from "../../context/auth.js"
+import { useAuth } from "../../hooks/auth.js"
 
 type FormData = yup.InferType<typeof schema>
 
@@ -20,7 +19,7 @@ const schema = yup.object({
 }).required()
 
 const Login = () => {
-    const { handleLogin } = useContext(AuthContext)
+    const { handleLogin } = useAuth()
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: yupResolver(schema),
