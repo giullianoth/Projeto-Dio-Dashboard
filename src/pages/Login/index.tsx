@@ -5,11 +5,12 @@ import { Container } from "../../styles/container.js"
 import { Section } from "../../styles/section.js"
 import { AuthForm, AuthFormText, AuthFormTitle, AuthFormWrapper, AuthLinks, AuthTitle, AuthWrapper, Forgot, Redirect } from "./styles.jsx"
 import { PrimaryButton } from "../../styles/button.js"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import api from "../../services/api.js"
+import { useContext } from "react"
+import { AuthContext } from "../../context/auth.js"
 
 type FormData = yup.InferType<typeof schema>
 
@@ -19,7 +20,7 @@ const schema = yup.object({
 }).required()
 
 const Login = () => {
-    const navigate = useNavigate()
+    const { handleLogin } = useContext(AuthContext)
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: yupResolver(schema),
@@ -31,25 +32,7 @@ const Login = () => {
     })
 
     const handleSignIn = async (formData: FormData) => {
-        try {
-            const { data } = await api.get(`users?email=${encodeURIComponent(formData.email)}`)
-
-            if (!data.length) {
-                alert("E-mail inválido")
-                return
-            }
-
-            const [user] = data
-
-            if (formData.password !== user.password) {
-                alert("Senha inválida")
-                return
-            }
-
-            navigate("/feed")
-        } catch {
-            alert("Houve um erro, tente novamente.")
-        }
+        await handleLogin(formData)
     }
 
     return (

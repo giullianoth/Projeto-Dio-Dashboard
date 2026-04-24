@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom"
 import { Container } from "../../styles/container.js"
-import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, HeaderUserContainer, HeaderUserIcon, HeaderUserImage, HeaderWrapper, Menu, MenuIcon, MenuItem } from "./styles.jsx"
+import { HeaderContainer, HeaderSearch, HeaderSearchIcon, HeaderSearchInput, HeaderUserContainer, HeaderUserIcon, HeaderUserImage, HeaderWrapper, LogoutButton, Menu, MenuIcon, MenuItem } from "./styles.jsx"
 import { Button } from "../../styles/button.js"
 import logo from "/images/logo-dio.png"
 import { MdKeyboardArrowDown, MdMenu, MdSearch } from "react-icons/md"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AuthContext } from "../../context/auth.js"
 
-type Props = {
-    authenticated?: boolean
-}
-
-const Header = ({ authenticated }: Props) => {
+const Header = () => {
     const [open, setOpen] = useState(false)
+    const { user, handleLogout } = useContext(AuthContext)
 
     const handleToggleMenu = () => {
         setOpen(prev => !prev)
@@ -25,7 +23,7 @@ const Header = ({ authenticated }: Props) => {
                         <img src={logo} alt="DIO" />
                     </Link>
 
-                    {authenticated &&
+                    {user.id &&
                         <Menu>
                             <MenuItem>
                                 <HeaderSearch>
@@ -50,8 +48,10 @@ const Header = ({ authenticated }: Props) => {
                             </MenuItem>
                         </Menu>}
 
-                    {authenticated
+                    {user.id
                         ? <HeaderUserContainer>
+                            <LogoutButton onClick={handleLogout}>Sair</LogoutButton>
+
                             <HeaderUserImage src="https://avatars.githubusercontent.com/u/106249494?v=4" alt="Giulliano Guimarães" />
 
                             <HeaderUserIcon>

@@ -105,3 +105,12 @@ export const Menu = styled.ul<MenuProps>`
 export const MenuItem = styled.li`
     list-style-type: none;
 `
+
+export const LogoutButton = styled.button`
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+`

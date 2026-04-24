@@ -6,7 +6,7 @@ import { FeedAside, FeedAsideTitle, FeedAsideUsers, FeedContainer, FeedPosts, Fe
 const Feed = () => {
     return (
         <>
-            <Header authenticated />
+            <Header />
 
             <main>
                 <FeedContainer>
